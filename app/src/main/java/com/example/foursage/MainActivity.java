@@ -2,6 +2,12 @@ package com.example.foursage;
 
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AdaptiveIconDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -13,15 +19,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
+
+import static com.example.foursage.R.drawable.dazhongfabu_selector;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,12 +46,19 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager=null;
     private BottomNavigationViewEx bnve=null;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fm=getSupportFragmentManager();
         transaction=fm.beginTransaction();
+
+
+
         bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
         /**测试消息提醒用
         addBadgeAt(0,1);
@@ -58,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
          /*给底部导航栏菜单项添加点击事件*/
         bnve.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
+        setSelected(0);
 
 
     }
@@ -68,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             bnve.setCurrentItem(position);
+            setSelected(position);
         }
         @Override
         public void onPageScrollStateChanged(int state) {
@@ -83,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.dazhongfabu://大众发布
                     viewPager.setCurrentItem(0);
-
+                    setSelected(0);
                     return true;
                 case R.id.news://消息
                     viewPager.setCurrentItem(1);
-
+                    setSelected(1);
                     return true;
                 case R.id.mine://我的
                     viewPager.setCurrentItem(2);
-
+                    setSelected(2);
                     return true;
             }
            return false;
@@ -135,6 +157,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+    //设置选中某一导航栏
+    private void setSelected(int num){
+                switch (num){
+                    case 0:
+                        bnve.getBottomNavigationItemView(0).setSelected(true);
+                        bnve.getBottomNavigationItemView(1).setSelected(false);
+                        bnve.getBottomNavigationItemView(2).setSelected(false);
+                        break;
+                    case 1:
+                        bnve.getBottomNavigationItemView(0).setSelected(false);
+                        bnve.getBottomNavigationItemView(1).setSelected(true);
+                        bnve.getBottomNavigationItemView(2).setSelected(false);
+                        break;
+                    case 2:
+                        bnve.getBottomNavigationItemView(0).setSelected(false);
+                        bnve.getBottomNavigationItemView(1).setSelected(false);
+                        bnve.getBottomNavigationItemView(2).setSelected(true);
+                        break;
+                    default:
+                        break;
+
+        }
+
+        }
+
+
 
 
 }

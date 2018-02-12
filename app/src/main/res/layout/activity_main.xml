@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4FE8E8"
-        app:itemTextColor="#fff"
+        app:itemIconTint="@color/color_test"
+        app:itemTextColor="@color/color_test"
         app:menu="@menu/menu" />
 </LinearLayout>
 
