@@ -1,13 +1,142 @@
 package com.example.foursage;
 
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
+
 
 public class MainActivity extends AppCompatActivity {
+    private Context context=null;
+    private FragmentManager fm=null;
+    private FragmentTransaction transaction=null;
+    private VpAdapter adapter=null;
+    private List<Fragment> fragments=null;
+    private ViewPager viewPager=null;
+    private BottomNavigationViewEx bnve=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fm=getSupportFragmentManager();
+        transaction=fm.beginTransaction();
+        bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
+        /**测试消息提醒用
+        addBadgeAt(0,1);
+        addBadgeAt(1,3);
+        addBadgeAt(2,2);
+         **/
+        fragments = new ArrayList<>(3);
+        adapter = new VpAdapter(getSupportFragmentManager(), fragments);
+        viewPager = (ViewPager) findViewById(R.id.content);
+        Dazhongfabu dazhongfabu=new Dazhongfabu();
+        News news=new News();
+        Mine mine=new Mine();
+        fragments.add(dazhongfabu);
+        fragments.add(news);
+        fragments.add(mine);
+        viewPager.setAdapter(adapter);
+         /*给底部导航栏菜单项添加点击事件*/
+        bnve.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        viewPager.addOnPageChangeListener(mOnPageChangeListener);
+
+
     }
+    private ViewPager.OnPageChangeListener mOnPageChangeListener=new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+        @Override
+        public void onPageSelected(int position) {
+            bnve.setCurrentItem(position);
+        }
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+    //底部菜单栏各个菜单项的点击事件处理
+    private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.dazhongfabu://大众发布
+                    viewPager.setCurrentItem(0);
+
+                    return true;
+                case R.id.news://消息
+                    viewPager.setCurrentItem(1);
+
+                    return true;
+                case R.id.mine://我的
+                    viewPager.setCurrentItem(2);
+
+                    return true;
+            }
+           return false;
+        }
+    };
+
+    /**
+     * view pager adapter
+     */
+    private static class VpAdapter extends FragmentPagerAdapter {
+        private List<Fragment> data;
+        public VpAdapter(FragmentManager fm, List<Fragment> data) {
+            super(fm);
+            this.data = data;
+        }
+        @Override
+        public int getCount() {
+            return data.size();
+        }
+        @Override
+        public Fragment getItem(int position) {
+            return data.get(position);
+        }
+    }
+
+    //消息小红点
+    private Badge addBadgeAt(final int position, int number) {
+        // add badge
+        return new QBadgeView(this)
+                .setBadgeNumber(number)
+                .setGravityOffset(12, 2, true)
+                .bindTarget(bnve.getBottomNavigationItemView(position))
+                .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
+                    @Override
+                    public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+                        if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState){
+                            //消息个数置0
+                            badge.setBadgeNumber(0);
+                        }
+
+                    }
+                });
+    }
+
+
 }
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/dazhongfabu"
+        android:title="大众发布"
+        android:icon="@drawable/dazhongfabu_48"
+        >
+    </item>
+    <item android:id="@+id/news"
+        android:title="消息"
+        android:icon="@drawable/news_48"
+        >
+    </item>
+    <item android:id="@+id/mine"
+        android:title="我的"
+        android:icon="@drawable/mine_48"
+        >
+    </item>
+</menu>
