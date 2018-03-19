@@ -1,16 +1,12 @@
 package com.example.foursage;
 
 
+import android.app.Fragment;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.AdaptiveIconDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
-import android.support.annotation.DrawableRes;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
@@ -19,8 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -42,13 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fm=null;
     private FragmentTransaction transaction=null;
     private VpAdapter adapter=null;
-    private List<Fragment> fragments=null;
+    private List<android.support.v4.app.Fragment> fragments=null;
     private ViewPager viewPager=null;
     private BottomNavigationViewEx bnve=null;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fm=getSupportFragmentManager();
         transaction=fm.beginTransaction();
-
-
-
         bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
         /**测试消息提醒用
         addBadgeAt(0,1);
@@ -124,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
      * view pager adapter
      */
     private static class VpAdapter extends FragmentPagerAdapter {
-        private List<Fragment> data;
-        public VpAdapter(FragmentManager fm, List<Fragment> data) {
+        private List<android.support.v4.app.Fragment> data;
+        public VpAdapter(FragmentManager fm, List<android.support.v4.app.Fragment> data) {
             super(fm);
             this.data = data;
         }
@@ -134,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             return data.size();
         }
         @Override
-        public Fragment getItem(int position) {
+        public android.support.v4.app.Fragment getItem(int position) {
             return data.get(position);
         }
     }

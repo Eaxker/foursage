@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:gravity="center"
-        android:text="消息"
+
+    <android.support.v7.widget.Toolbar
+        app:popupTheme="@style/ToolbarPopupTheme"
+        android:id="@+id/toolbar_news"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="?actionBarSize"
+        android:background="@color/primary"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/zhizhen" />
+
+        <FrameLayout android:id="@+id/news_fl"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/xiaoxi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingRight="10dp"
+                android:text="消息"
+                android:textColor="@color/wei"
+                android:textSize="23dp" />
+
+            <LinearLayout android:layout_gravity="right|top"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/unreadednum"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/dian_32"
+                    android:gravity="center"
+                    android:text="19"
+                    android:textColor="@color/white"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/inform_fl"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp">
+            <TextView android:id="@+id/inform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingRight="8dp"
+                android:text="通知"
+                android:textColor="@color/wei" />
+            <LinearLayout android:layout_gravity="right|top"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/inform_num"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/dian_16"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/white"
+                    android:textSize="8dp"
+                    />
+            </LinearLayout>
+        </FrameLayout>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            >
+            <ImageView
+                android:id="@+id/find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/search1_64" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <FrameLayout android:id="@+id/content_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </LinearLayout>

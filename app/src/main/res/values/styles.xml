@@ -6,5 +6,26 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+    </style>
+    <!--这是通过Style去设定icon-->
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:src">@mipmap/more_32</item>
+    </style>
+
+    <style name="ToolbarPopupTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="android:colorBackground">#90e62020</item>  <!-- 设置背景颜色-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item> <!--新增一个item，用于控制menu-->
+        <!-- 修改字体大小 -->
+        <item name="android:textSize">16sp</item>
+        <!-- 修改字体颜色 -->
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+
     </style>
 </resources>

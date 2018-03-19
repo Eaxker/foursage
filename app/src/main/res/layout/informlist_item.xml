@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/infor_head"
+        android:src="@drawable/head1"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
+    <LinearLayout android:orientation="vertical"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView android:id="@+id/name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#009688"
+                android:textSize="15dp"
+                android:text="小美"/>
+            <TextView
+                android:text="评论了"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingLeft="3dp"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView android:id="@+id/name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#009688"
+                android:text="小华"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView android:id="@+id/inform_content"
+                android:text="哈哈哈,笑死我了，快笑死我了."
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="10"
+                android:paddingBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView android:id="@+id/inform_time"
+                android:gravity="bottom"
+                android:paddingBottom="5dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="5dp"
+                android:text="2-3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="4dp"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/related_picture"
+            android:src="@drawable/hi"
+            android:visibility="gone"
+            android:layout_gravity="right"
+            android:layout_width="57dp"
+            android:layout_height="match_parent" />
+        <TextView android:id="@+id/related_content"
+            android:text="从前有一个阿里巴巴和四十大盗的故事，"
+            android:layout_width="57dp"
+            android:visibility="visible"
+            android:maxLines="3"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:layout_weight="0.24" />
+    </LinearLayout>
+
+</LinearLayout>
+
+    <View android:background="#aea9a9"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp">
+    </View>
+
+
+
+</LinearLayout>
